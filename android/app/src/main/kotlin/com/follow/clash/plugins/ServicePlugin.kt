@@ -5,6 +5,7 @@ import com.follow.clash.ServiceState
 import com.follow.clash.common.Components
 import com.follow.clash.models.SharedState
 import com.follow.clash.service.NetworkObserver
+import com.follow.clash.service.HomeWifiMode
 import com.google.gson.Gson
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.BinaryMessenger
@@ -24,12 +25,16 @@ class ServicePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
     private lateinit var scope: CoroutineScope
     private val gson = Gson()
     private var commandRevision = 0
+    private val homeWifiListener: (Map<String, Any?>) -> Unit = { state ->
+        scope.launch(Dispatchers.Main) { channel.invokeMethod("homeWifiChanged", state) }
+    }
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
         messenger = binding.binaryMessenger
         channel = MethodChannel(messenger, SERVICE_CHANNEL)
         channel.setMethodCallHandler(this)
+        HomeWifiMode.addListener(homeWifiListener)
         // Serial: watchRoute keeps the latest intent by the order calls reach the Core.
         coreChannel = MethodChannel(
             messenger,
@@ -42,6 +47,7 @@ class ServicePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
+        HomeWifiMode.removeListener(homeWifiListener)
         coreChannel.setMethodCallHandler(null)
         scope.cancel()
         ServiceController.setEventListener(null)
@@ -55,6 +61,16 @@ class ServicePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
             "syncState" -> syncState(call, result)
             "start" -> start(call, result)
             "stop" -> stop(call, result)
+            "getHomeWifi" -> HomeWifiMode.getState(result::success)
+            "configureHomeWifi" -> {
+                val enabled = call.argument<Boolean>("enabled")
+                val ssid = call.argument<String>("ssid")
+                if (enabled == null || ssid == null || (enabled && ssid.isEmpty()) || ssid.toByteArray().size > 32) {
+                    result.error("INVALID_ARGUMENT", "A Wi-Fi SSID of up to 32 bytes is required", null)
+                } else {
+                    HomeWifiMode.configure(enabled, ssid, result::success)
+                }
+            }
             else -> result.notImplemented()
         }
     }

@@ -91,6 +91,7 @@ object NetworkObserver {
 
     @Synchronized
     fun start() {
+        HomeWifiMode.start()
         if (started) return
         runCatching { requireNotNull(connectivity).registerNetworkCallback(request, callback) }
             .onSuccess { started = true }
@@ -115,6 +116,20 @@ object NetworkObserver {
             else -> 20
         } + entry.value.priorityPenalty
     }
+
+    fun netBirdInterfaces(): String = networkInfos.keys.mapNotNull { network ->
+        val capabilities = connectivity?.getNetworkCapabilities(network) ?: return@mapNotNull null
+        if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)) return@mapNotNull null
+        val properties = connectivity?.getLinkProperties(network) ?: return@mapNotNull null
+        val name = properties.interfaceName ?: return@mapNotNull null
+        val index = runCatching { java.net.NetworkInterface.getByName(name)?.index }.getOrNull()
+            ?: return@mapNotNull null
+        val addresses = properties.linkAddresses.mapNotNull { address ->
+            address.address.hostAddress?.takeUnless { it.contains('%') }?.let { "$it/${address.prefixLength}" }
+        }
+        if (addresses.isEmpty()) return@mapNotNull null
+        "$name $index ${properties.mtu.takeIf { it > 0 } ?: 1500} true true false false true | ${addresses.joinToString(" ")}"
+    }.joinToString("\n")
 
     @Synchronized
     private fun updateDns() {

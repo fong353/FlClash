@@ -17,6 +17,7 @@ import 'app.dart';
 import 'config.dart';
 import 'core.dart';
 import 'database.dart';
+import 'home_wifi.dart';
 
 part 'generated/state.g.dart';
 part 'state/proxies.dart';

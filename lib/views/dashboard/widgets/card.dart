@@ -369,7 +369,7 @@ class DashboardConnectedButton extends StatelessWidget {
   final double outer;
   final double inner;
   final Color background;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String semanticLabel;
   final Widget Function(Color foreground) builder;
 
@@ -381,6 +381,7 @@ class DashboardConnectedButton extends StatelessWidget {
     final colorScheme = context.colorScheme;
     return Semantics(
       button: true,
+      enabled: onTap != null,
       selected: selected,
       inMutuallyExclusiveGroup: true,
       label: semanticLabel,

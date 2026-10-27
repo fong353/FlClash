@@ -136,7 +136,7 @@ class VpnService : SystemVpnService(), ManagedService {
             if (options.allowBypass) {
                 allowBypass()
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && options.systemProxy) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && options.systemProxy && Core.netBirdCIDR().isEmpty()) {
                 GlobalState.log("Enable VPN HTTP proxy")
                 setHttpProxy(
                     ProxyInfo.buildDirectProxy(
@@ -161,6 +161,7 @@ class VpnService : SystemVpnService(), ManagedService {
                     Core.startTun(
                         fd = fd,
                         protect = this::protect,
+                        discoverInterfaces = NetworkObserver::netBirdInterfaces,
                         resolveUid = this::resolveUid,
                         resolvePackage = this::resolvePackage,
                         stack = options.stack,
@@ -177,6 +178,11 @@ class VpnService : SystemVpnService(), ManagedService {
     }
 
     private fun Builder.addAddressAndRoutes(options: VpnOptions) {
+        val netBirdCIDR = Core.netBirdCIDR()
+        if (netBirdCIDR.isNotEmpty()) {
+            val route = netBirdCIDR.toCIDR()
+            addRoute(route.address, route.prefixLength)
+        }
         val ipv4Address = IPV4_ADDRESS.toCIDR()
         addAddress(ipv4Address.address, ipv4Address.prefixLength)
         addRoutes(

@@ -88,6 +88,7 @@ func updateListeners(cfg *config.Config) {
 }
 
 func handleShutdown() bool {
+	closeNetBird()
 	handleStopLog()
 	stopRouteWatch()
 

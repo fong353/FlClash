@@ -246,7 +246,7 @@ val bindCore =
             buildConfig.map { config ->
                 val flags = config["go_ldflags"].orEmpty().split(" ").filter { it.isNotEmpty() }
                 val version = config["core_version"].orEmpty()
-                (flags + listOfNotNull(version.takeIf { it.isNotEmpty() }?.let { "-X=github.com/metacubex/mihomo/constant.Version=$it" }))
+                (flags + "-checklinkname=0" + listOfNotNull(version.takeIf { it.isNotEmpty() }?.let { "-X=github.com/metacubex/mihomo/constant.Version=$it" }))
                     .joinToString(" ")
             },
         )
@@ -271,5 +271,7 @@ androidComponents {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.versions.kotlinxCoroutines.get()}")
     implementation(files(bindCore.flatMap { it.classesJar }))
 }

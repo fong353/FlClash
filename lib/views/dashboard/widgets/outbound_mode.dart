@@ -32,6 +32,7 @@ class OutboundModeCard extends ConsumerWidget {
       patchClashConfigProvider.select((state) => state.mode),
     );
     final tone = DashboardColors.of(context).tone;
+    final automatic = ref.watch(homeWifiProvider).enabled;
     final style = AppTextStyle.footnote.of(context, emphasized: true);
     return DashboardCard(
       semanticLabel: context.appLocalizations.outboundMode,
@@ -39,7 +40,9 @@ class OutboundModeCard extends ConsumerWidget {
         children: [
           DashboardCardHeader(
             glyph: AppGlyphs.split,
-            title: context.appLocalizations.outboundMode,
+            title: automatic
+                ? context.appLocalizations.homeWifiAutomatic
+                : context.appLocalizations.outboundMode,
           ),
           const SizedBox(height: 12),
           DashboardConnectedGroup(
@@ -54,7 +57,7 @@ class OutboundModeCard extends ConsumerWidget {
                     inner: 12,
                     background: tone,
                     semanticLabel: item.label,
-                    onTap: () => _changeMode(ref, item),
+                    onTap: automatic ? null : () => _changeMode(ref, item),
                     builder: (foreground) => SizedBox(
                       height: 52,
                       child: Column(
@@ -95,6 +98,7 @@ class OutboundModeBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final density = DashboardDensityScope.of(context);
+    final automatic = ref.watch(homeWifiProvider).enabled;
     final mode = ref.watch(
       patchClashConfigProvider.select((state) => state.mode),
     );
@@ -121,7 +125,9 @@ class OutboundModeBar extends ConsumerWidget {
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: constraints.maxWidth / 4),
               child: Text(
-                appLocalizations.outboundMode,
+                automatic
+                    ? appLocalizations.homeWifiAutomatic
+                    : appLocalizations.outboundMode,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: DashboardText.cardTitle(context),
@@ -141,7 +147,7 @@ class OutboundModeBar extends ConsumerWidget {
                         inner: 10,
                         background: DashboardColors.of(context).tone,
                         semanticLabel: item.label,
-                        onTap: () => _changeMode(ref, item),
+                        onTap: automatic ? null : () => _changeMode(ref, item),
                         builder: (foreground) => Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 6,

@@ -31,6 +31,8 @@ Future<Map<String, Object?>> _decodeResponse(
 }
 
 abstract mixin class ServiceListener {
+  void onHomeWifiChanged(Map<Object?, Object?> state) {}
+
   void onServiceEvent(CoreEvent event) {}
 
   void onServiceStopped() {}
@@ -56,6 +58,13 @@ class Service {
     methodChannel = const MethodChannel('$packageName/service');
     methodChannel.setMethodCallHandler((call) async {
       switch (call.method) {
+        case 'homeWifiChanged':
+          final state = Map<Object?, Object?>.from(call.arguments as Map);
+          _dispatch(
+            'home Wi-Fi',
+            (listener) => listener.onHomeWifiChanged(state),
+          );
+          break;
         case 'event':
           final methodCall = CoreMethodCall.fromJson(
             Map<String, Object?>.from(
@@ -128,6 +137,20 @@ class Service {
   Future<String> init() async {
     return await methodChannel.invokeMethod<String>('init') ?? '';
   }
+
+  Future<Map<Object?, Object?>> getHomeWifi() async =>
+      await methodChannel.invokeMapMethod<Object?, Object?>('getHomeWifi') ??
+      {};
+
+  Future<Map<Object?, Object?>> configureHomeWifi(
+    bool enabled,
+    String ssid,
+  ) async =>
+      await methodChannel.invokeMapMethod<Object?, Object?>(
+        'configureHomeWifi',
+        {'enabled': enabled, 'ssid': ssid},
+      ) ??
+      {};
 
   Future<String> syncState(SharedState state) async {
     return await methodChannel.invokeMethod<String>(

@@ -690,6 +690,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideIp": MessageLookupByLibrary.simpleMessage("隐藏 IP"),
     "hidePassword": MessageLookupByLibrary.simpleMessage("隐藏密码"),
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage("隐藏超时代理"),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("家庭 Wi-Fi 自动模式"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID 完全匹配时使用直连；其他网络或无法读取 SSID 时使用规则。VPN 和 NetBird 保持连接。关闭此功能后可手动选择模式。",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "无法读取或保存 Wi-Fi 自动模式设置",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("家庭 Wi-Fi SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "请输入 1–32 字节的 Wi-Fi SSID",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "未识别到 Wi-Fi SSID，使用规则模式",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("跳跃间隔"),
     "host": MessageLookupByLibrary.simpleMessage("主机"),
     "hostname": MessageLookupByLibrary.simpleMessage("主机名"),
@@ -925,6 +939,40 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("更多"),
     "name": MessageLookupByLibrary.simpleMessage("名称"),
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage("底栏"),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage("NetBird 配置"),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "停止 VPN 后保存，再正常启动。首次接入需一次性注册密钥，成功后自动清除；已注册身份保留原管理地址和设备名。本版支持通过 IPv4 地址主动访问内网。",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("已连接"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("连接中"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "NetBird 连接失败",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird 与代理共用此 VPN。各代理模式下，内网 IP 流量均走 NetBird，其余流量沿用配置。启用 NetBird 时不设置 VPN HTTP 代理。",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage("设备名称"),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage("随 VPN 启用 NetBird"),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "无法读取 NetBird 状态。",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("内网网段"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage("暂无设备"),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("点对点连接"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage("NetBird 设备"),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage("中继连接"),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "检查网络和注册配置后，停止并重新启动 VPN 重试。公网代理可继续使用。",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "保存失败，请检查 HTTPS 管理地址、设备名、私有 IPv4 网段和注册密钥。",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage("管理服务器"),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage("一次性注册密钥"),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "请先停止 VPN，再修改 NetBird 配置。",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("未连接"),
     "network": MessageLookupByLibrary.simpleMessage("网络"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,

@@ -173,6 +173,11 @@ func applyConfig(params *SetupParams) error {
 		cfg = fallback
 	}
 
+	if netBirdErr := decorateNetBirdConfig(cfg); netBirdErr != nil {
+		return netBirdErr
+	}
+
+	cfg.General.Mode = effectiveMode(cfg.General.Mode)
 	currentConfig = cfg
 	hub.ApplyConfig(cfg)
 	patchSelectGroup(params.SelectedMap)
@@ -211,10 +216,11 @@ func updateConfig(params *UpdateParams) error {
 	}
 	routeChange := routeUnchanged
 	if params.Mode != nil {
-		if general.Mode != *params.Mode {
+		nextMode := effectiveMode(*params.Mode)
+		if general.Mode != nextMode {
 			routeChange = routeMoved
 		}
-		general.Mode = *params.Mode
+		general.Mode = nextMode
 		tunnel.SetMode(general.Mode)
 	}
 	if params.LogLevel != nil {

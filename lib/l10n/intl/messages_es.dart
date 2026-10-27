@@ -954,6 +954,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "Ocultar proxies sin respuesta",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage(
+      "Modo automático del Wi-Fi de casa",
+    ),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "Usar Directo si el SSID coincide exactamente; usar Reglas en otras redes o si no se puede leer el SSID. La VPN y NetBird siguen conectados. Desactiva esta función para elegir el modo manualmente.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "No se pudieron leer o guardar los ajustes del modo Wi-Fi automático",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage(
+      "SSID del Wi-Fi de casa",
+    ),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "Introduce un SSID de 1–32 bytes UTF-8",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "SSID de Wi-Fi no disponible; usando Reglas",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("Intervalo de salto"),
     "host": MessageLookupByLibrary.simpleMessage("Host"),
     "hostname": MessageLookupByLibrary.simpleMessage("Nombre de host"),
@@ -1028,9 +1046,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "inputRuleContent": MessageLookupByLibrary.simpleMessage(
       "Introduce el contenido de la regla",
     ),
-    "installedAppsPermissionDeniedMessage": MessageLookupByLibrary.simpleMessage(
-      "Se denegó el permiso de lista de apps, por lo que no se pueden mostrar las apps instaladas. Concédelo manualmente en los ajustes del sistema.",
-    ),
+    "installedAppsPermissionDeniedMessage":
+        MessageLookupByLibrary.simpleMessage(
+          "Se denegó el permiso de lista de apps, por lo que no se pueden mostrar las apps instaladas. Concédelo manualmente en los ajustes del sistema.",
+        ),
     "installedAppsPermissionDesc": MessageLookupByLibrary.simpleMessage(
       "Este sistema oculta la lista de apps instaladas hasta que se concede el permiso. Autorízalo para configurar el proxy por app.",
     ),
@@ -1276,6 +1295,56 @@ class MessageLookup extends MessageLookupByLibrary {
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage(
       "Barra inferior",
     ),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Configuración de NetBird",
+    ),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "Guarde con la VPN detenida y luego iníciela. La clave inicial se borra tras el registro. Se conservan el servidor y el nombre. Admite acceso saliente por IPv4.",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("Conectado"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("Conectando"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "Error de conexión de NetBird",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird comparte esta VPN. Las IP internas usan NetBird en todos los modos y el resto sigue el perfil. Se desactiva el proxy HTTP de la VPN.",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage(
+      "Nombre del dispositivo",
+    ),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage(
+      "Usar NetBird con la VPN",
+    ),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "No se pudo leer el estado de NetBird.",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("Red superpuesta"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage(
+      "No hay dispositivos disponibles",
+    ),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("Conexión directa"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage(
+      "Dispositivos NetBird",
+    ),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage(
+      "Conexión por retransmisor",
+    ),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "Revise la red y el registro, luego reinicie la VPN. El proxy de Internet sigue disponible.",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "No se pudo guardar. Revise el servidor HTTPS, nombre, red IPv4 privada y clave.",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage(
+      "Servidor de administración",
+    ),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage(
+      "Clave de registro de un solo uso",
+    ),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "Detenga la VPN antes de modificar NetBird.",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("Desconectado"),
     "network": MessageLookupByLibrary.simpleMessage("Red"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,

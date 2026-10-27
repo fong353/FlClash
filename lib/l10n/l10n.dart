@@ -7943,8 +7943,7 @@ class AppLocalizations {
   String customImportDroppedSubRules(num count, Object label) {
     return Intl.plural(
       count,
-      one:
-          '1 SUB-RULE rule was dropped, since custom profiles do not support sub-rules',
+      one: '1 SUB-RULE rule was dropped, since custom profiles do not support sub-rules',
       other:
           '$label SUB-RULE rules were dropped, since custom profiles do not support sub-rules',
       name: 'customImportDroppedSubRules',
@@ -8050,6 +8049,266 @@ class AppLocalizations {
       name: 'alreadyInLocalProxies',
       desc: '',
       args: [name],
+    );
+  }
+
+  /// `NetBird configuration`
+  String get netBirdConfiguration {
+    return Intl.message(
+      'NetBird configuration',
+      name: 'netBirdConfiguration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use NetBird with VPN`
+  String get netBirdEnabled {
+    return Intl.message(
+      'Use NetBird with VPN',
+      name: 'netBirdEnabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Management server`
+  String get netBirdServer {
+    return Intl.message(
+      'Management server',
+      name: 'netBirdServer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Device name`
+  String get netBirdDeviceName {
+    return Intl.message(
+      'Device name',
+      name: 'netBirdDeviceName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overlay network`
+  String get netBirdNetwork {
+    return Intl.message(
+      'Overlay network',
+      name: 'netBirdNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One-time setup key`
+  String get netBirdSetupKey {
+    return Intl.message(
+      'One-time setup key',
+      name: 'netBirdSetupKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NetBird devices`
+  String get netBirdPeers {
+    return Intl.message(
+      'NetBird devices',
+      name: 'netBirdPeers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No devices available`
+  String get netBirdNoPeers {
+    return Intl.message(
+      'No devices available',
+      name: 'netBirdNoPeers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connected`
+  String get netBirdConnected {
+    return Intl.message(
+      'Connected',
+      name: 'netBirdConnected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connecting`
+  String get netBirdConnecting {
+    return Intl.message(
+      'Connecting',
+      name: 'netBirdConnecting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disconnected`
+  String get netBirdStopped {
+    return Intl.message(
+      'Disconnected',
+      name: 'netBirdStopped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Direct connection`
+  String get netBirdP2P {
+    return Intl.message(
+      'Direct connection',
+      name: 'netBirdP2P',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Relayed connection`
+  String get netBirdRelayed {
+    return Intl.message(
+      'Relayed connection',
+      name: 'netBirdRelayed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to read NetBird status.`
+  String get netBirdLoadError {
+    return Intl.message(
+      'Unable to read NetBird status.',
+      name: 'netBirdLoadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NetBird connection failed`
+  String get netBirdConnectionError {
+    return Intl.message(
+      'NetBird connection failed',
+      name: 'netBirdConnectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to save. Check the HTTPS server, device name, private IPv4 network and setup key.`
+  String get netBirdSaveError {
+    return Intl.message(
+      'Unable to save. Check the HTTPS server, device name, private IPv4 network and setup key.',
+      name: 'netBirdSaveError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stop the VPN before changing NetBird settings.`
+  String get netBirdStopBeforeEditing {
+    return Intl.message(
+      'Stop the VPN before changing NetBird settings.',
+      name: 'netBirdStopBeforeEditing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NetBird shares this VPN. Overlay IP traffic uses NetBird in every proxy mode; other traffic follows your profile. VPN HTTP proxy is disabled while NetBird is enabled.`
+  String get netBirdDescription {
+    return Intl.message(
+      'NetBird shares this VPN. Overlay IP traffic uses NetBird in every proxy mode; other traffic follows your profile. VPN HTTP proxy is disabled while NetBird is enabled.',
+      name: 'netBirdDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save while the VPN is stopped, then start it normally. First enrollment needs a one-time setup key; the key is cleared after success. Enrolled identities keep their original server and name. This version supports outbound access by IPv4 address.`
+  String get netBirdConfigurationHint {
+    return Intl.message(
+      'Save while the VPN is stopped, then start it normally. First enrollment needs a one-time setup key; the key is cleared after success. Enrolled identities keep their original server and name. This version supports outbound access by IPv4 address.',
+      name: 'netBirdConfigurationHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check connectivity and enrollment settings, then stop and start the VPN to retry. Internet proxy traffic remains available.`
+  String get netBirdRetryHint {
+    return Intl.message(
+      'Check connectivity and enrollment settings, then stop and start the VPN to retry. Internet proxy traffic remains available.',
+      name: 'netBirdRetryHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Wi-Fi automatic mode`
+  String get homeWifiAutomatic {
+    return Intl.message(
+      'Home Wi-Fi automatic mode',
+      name: 'homeWifiAutomatic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Wi-Fi SSID`
+  String get homeWifiSsid {
+    return Intl.message(
+      'Home Wi-Fi SSID',
+      name: 'homeWifiSsid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Direct on an exact SSID match; use Rule on other networks or when the SSID cannot be read. VPN and NetBird stay connected. Turn this off to select a mode manually.`
+  String get homeWifiDescription {
+    return Intl.message(
+      'Use Direct on an exact SSID match; use Rule on other networks or when the SSID cannot be read. VPN and NetBird stay connected. Turn this off to select a mode manually.',
+      name: 'homeWifiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wi-Fi SSID unavailable; using Rule mode`
+  String get homeWifiUnknown {
+    return Intl.message(
+      'Wi-Fi SSID unavailable; using Rule mode',
+      name: 'homeWifiUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to read or save Wi-Fi automatic mode settings`
+  String get homeWifiError {
+    return Intl.message(
+      'Unable to read or save Wi-Fi automatic mode settings',
+      name: 'homeWifiError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter an SSID of 1–32 UTF-8 bytes`
+  String get homeWifiSsidError {
+    return Intl.message(
+      'Enter an SSID of 1–32 UTF-8 bytes',
+      name: 'homeWifiSsidError',
+      desc: '',
+      args: [],
     );
   }
 }

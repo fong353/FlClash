@@ -276,6 +276,7 @@ class AccessControlState extends _$AccessControlState
 
 @riverpod
 bool suspend(Ref ref) {
+  if (ref.watch(homeWifiProvider).enabled) return false;
   final currentSSID = ref.watch(currentSSIDProvider);
   final excludeSSIDs = ref.watch(excludeSSIDsProvider);
   return excludeSSIDs.contains(currentSSID);

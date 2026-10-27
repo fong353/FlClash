@@ -138,7 +138,7 @@ final class SetupPatchProvider
   }
 }
 
-String _$setupPatchHash() => r'283e94846903bafab1c22985b6f90d4c0e2a4697';
+String _$setupPatchHash() => r'd09fb41d40ced4cd47c9131fe55e983e35128724';
 
 @ProviderFor(trayState)
 final trayStateProvider = TrayStateProvider._();
@@ -607,7 +607,7 @@ final class SuspendProvider extends $FunctionalProvider<bool, bool, bool>
   }
 }
 
-String _$suspendHash() => r'9ab9210f4f3c70f63d9858d492a9c09b3fb24bf1';
+String _$suspendHash() => r'3efaf1570453fd514b095562086b772e21b8cda7';
 
 @ProviderFor(DynamicColor)
 final dynamicColorProvider = DynamicColorProvider._();

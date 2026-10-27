@@ -27,6 +27,18 @@ class _AppStateManagerState extends ConsumerState<AppStateManager>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    if (system.isAndroid) {
+      unawaited(
+        ref.read(homeWifiProvider.notifier).refresh().catchError((
+          Object error,
+        ) {
+          commonPrint.log(
+            'Unable to read home Wi-Fi mode: $error',
+            logLevel: LogLevel.warning,
+          );
+        }),
+      );
+    }
     // A desktop build started to the tray mounts while hidden, and a paused
     // render never runs a post-frame callback.
     scheduleMicrotask(() {
@@ -88,6 +100,18 @@ class _AppStateManagerState extends ConsumerState<AppStateManager>
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     _updateVisible(state);
     if (state == AppLifecycleState.resumed) {
+      if (system.isAndroid) {
+        unawaited(
+          ref.read(homeWifiProvider.notifier).refresh().catchError((
+            Object error,
+          ) {
+            commonPrint.log(
+              'Unable to refresh home Wi-Fi mode: $error',
+              logLevel: LogLevel.warning,
+            );
+          }),
+        );
+      }
       unawaited(ref.read(locationPermissionsProvider.notifier).refresh());
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) {

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:fl_clash/enum/enum.dart';
 
 enum CoreMethod {
+  getNetBirdStatus,
+  configureNetBird,
   message,
   initClash,
   getIsInit,

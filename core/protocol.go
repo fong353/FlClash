@@ -15,6 +15,8 @@ import (
 type CoreMethod string
 
 const (
+	getNetBirdStatusMethod         CoreMethod = "getNetBirdStatus"
+	configureNetBirdMethod         CoreMethod = "configureNetBird"
 	messageMethod                  CoreMethod = "message"
 	initClashMethod                CoreMethod = "initClash"
 	getIsInitMethod                CoreMethod = "getIsInit"

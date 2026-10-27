@@ -91,6 +91,12 @@ class CoreController {
 
   FutureOr<bool> get isInit => _interface.isInit;
 
+  Future<Map<String, dynamic>> getNetBirdStatus() =>
+      _interface.getNetBirdStatus();
+
+  Future<bool> configureNetBird(Map<String, dynamic> settings) =>
+      _interface.configureNetBird(settings);
+
   Future<String> validateConfig(String path) async {
     final res = await _interface.validateConfig(path);
     return res;

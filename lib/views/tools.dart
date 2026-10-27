@@ -18,6 +18,8 @@ import 'config/custom_resources.dart';
 import 'developer.dart';
 import 'disclaimer.dart';
 import 'theme.dart';
+import 'netbird.dart';
+import 'home_wifi.dart';
 
 class ToolsView extends ConsumerStatefulWidget {
   const ToolsView({super.key});
@@ -56,7 +58,19 @@ class _ToolViewState extends ConsumerState<ToolsView> {
         const _ThemeItem(),
         const _BackupItem(),
         if (system.isDesktop) const _HotkeyItem(),
-        if (system.isAndroid) const _AccessItem(),
+        if (system.isAndroid) ...[
+          const _AccessItem(),
+          ListItem.open(
+            title: const Text('NetBird'),
+            leading: const GlyphIcon(AppGlyphs.key),
+            widget: const NetBirdView(),
+          ),
+          ListItem.open(
+            title: Text(appLocalizations.homeWifiAutomatic),
+            leading: const GlyphIcon(AppGlyphs.rules),
+            widget: const HomeWifiView(),
+          ),
+        ],
         const _AdvancedConfigItem(),
         const _CustomResourcesItem(),
         const _GeneralItem(),

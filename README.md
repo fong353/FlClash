@@ -1,3 +1,11 @@
+# FlClash NetBird Android fork
+
+Android fork integrating an embedded NetBird client with FlClash's existing Mihomo core through an authenticated loopback SOCKS bridge. The app uses a separate package ID and can coexist with upstream FlClash.
+
+Implementation, build instructions, validation and limitations: [NETBIRD_ANDROID.md](NETBIRD_ANDROID.md).
+
+Upstream FlClash documentation and attribution follow below.
+
 <div align="center">
 
 <img src="assets/images/icon.png" alt="FlClash" width="88">

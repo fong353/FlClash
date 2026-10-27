@@ -744,6 +744,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "시간 초과된 프록시 숨기기",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("집 Wi-Fi 자동 모드"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID가 정확히 일치하면 직접 연결을, 다른 네트워크이거나 SSID를 읽을 수 없으면 규칙 모드를 사용합니다. VPN과 NetBird는 연결을 유지합니다. 수동으로 모드를 선택하려면 이 기능을 끄세요.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi 자동 모드 설정을 읽거나 저장할 수 없습니다",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("집 Wi-Fi SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "UTF-8 기준 1–32바이트의 SSID를 입력하세요",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi SSID를 확인할 수 없어 규칙 모드를 사용합니다",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("호핑 간격"),
     "host": MessageLookupByLibrary.simpleMessage("호스트"),
     "hostname": MessageLookupByLibrary.simpleMessage("호스트 이름"),
@@ -999,6 +1013,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("더 보기"),
     "name": MessageLookupByLibrary.simpleMessage("이름"),
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage("하단 바"),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage("NetBird 설정"),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "VPN을 중지한 상태에서 저장한 후 시작하세요. 최초 등록 키는 성공 후 삭제됩니다. 등록된 서버와 이름은 유지됩니다. IPv4 주소로 나가는 연결을 지원합니다.",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("연결됨"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("연결 중"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "NetBird 연결 실패",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird가 이 VPN을 공유합니다. 모든 모드에서 내부 IP는 NetBird를 사용하고 나머지는 프로필을 따릅니다. VPN HTTP 프록시는 비활성화됩니다.",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage("기기 이름"),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage(
+      "VPN과 함께 NetBird 사용",
+    ),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "NetBird 상태를 읽을 수 없습니다.",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("오버레이 네트워크"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage("사용 가능한 기기 없음"),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("직접 연결"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage("NetBird 기기"),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage("릴레이 연결"),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "네트워크와 등록 설정을 확인한 후 VPN을 다시 시작하세요. 인터넷 프록시는 계속 사용할 수 있습니다.",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "저장할 수 없습니다. HTTPS 서버, 기기 이름, 사설 IPv4 네트워크 및 키를 확인하세요.",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage("관리 서버"),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage("일회용 등록 키"),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "NetBird 설정을 변경하기 전에 VPN을 중지하세요.",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("연결 안 됨"),
     "network": MessageLookupByLibrary.simpleMessage("네트워크"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,

@@ -755,6 +755,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "タイムアウトしたプロキシを隠す",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("自宅 Wi-Fi 自動モード"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID が完全一致するとダイレクト、それ以外や SSID を取得できない場合はルールを使用します。VPN と NetBird は接続を維持します。手動でモードを選ぶには無効にしてください。",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi 自動モード設定の読み込みまたは保存に失敗しました",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("自宅 Wi-Fi の SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "SSID を UTF-8 で 1〜32 バイトで入力してください",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi SSID を取得できません。ルールを使用します",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("ホップ間隔"),
     "host": MessageLookupByLibrary.simpleMessage("ホスト"),
     "hostname": MessageLookupByLibrary.simpleMessage("ホスト名"),
@@ -1014,6 +1028,42 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("その他"),
     "name": MessageLookupByLibrary.simpleMessage("名前"),
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage("ボトムバー"),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage("NetBird 設定"),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "VPN 停止中に保存してから起動します。初回は使い捨てキーが必要で、成功後に削除されます。登録後のサーバーと名前は固定です。IPv4 アドレスによる発信接続に対応します。",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("接続済み"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("接続中"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "NetBird の接続に失敗しました",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird はこの VPN を共有します。各モードで内部 IP は NetBird、その他はプロファイルに従います。有効時は VPN HTTP プロキシを設定しません。",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage("デバイス名"),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage(
+      "VPN と共に NetBird を使用",
+    ),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "NetBird の状態を取得できません。",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("オーバーレイネットワーク"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage("デバイスがありません"),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("直接接続"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage("NetBird デバイス"),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage("リレー接続"),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "ネットワークと登録設定を確認し、VPN を再起動してください。インターネットのプロキシは引き続き利用できます。",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "保存できません。HTTPS サーバー、デバイス名、プライベート IPv4 ネットワークとキーを確認してください。",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage("管理サーバー"),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage("使い捨てセットアップキー"),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "NetBird 設定を変更する前に VPN を停止してください。",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("未接続"),
     "network": MessageLookupByLibrary.simpleMessage("ネットワーク"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,
