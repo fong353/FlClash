@@ -260,7 +260,7 @@ godebug (
 	x509negativeserial=1
 )
 
-replace github.com/netbirdio/netbird => github.com/fong353/netbird v0.81.5-0.20261027122834-d6ee0f6c3da7
+replace github.com/netbirdio/netbird => github.com/fong353/netbird v0.81.5-0.20261027131939-9f69e64ea677
 
 replace github.com/mailru/easyjson => github.com/netbirdio/easyjson v0.9.0
 

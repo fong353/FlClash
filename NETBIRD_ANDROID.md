@@ -18,7 +18,7 @@ NetBird sockets use FlClash's `VpnService.protect()` callback. Physical interfac
 
 The Android Go resolver uses the physical DNS servers delivered by `NetworkObserver` and protects its resolver sockets while the VPN runs, avoiding recursive lookups through the virtual DNS server. Mihomo's existing profile DNS implementation remains responsible for application DNS.
 
-The existing `ServiceState` owns Android VPN intent. The embedded module coalesces its own start/stop requests and cancels pending enrollment without blocking the service callback. Stop closes bridge sessions and stops the embedded client. Network changes reach NetBird's connection-event manager. Registration failure leaves public proxy traffic available and overlay traffic blocked; stop/start retries enrollment.
+The existing `ServiceState` owns Android VPN intent. The embedded module coalesces its own start/stop requests and cancels pending enrollment without blocking the service callback. Stop closes bridge sessions and stops the embedded client. Network changes reach NetBird's connection-event manager. Transient engine state stays in memory because the embedded client does not manage host routes or DNS. Registration failure leaves public proxy traffic available and overlay traffic blocked; stop/start retries enrollment.
 
 ## Settings and identity
 
@@ -34,9 +34,9 @@ This version provides outbound TCP/UDP access using overlay IPv4 addresses. It d
 
 - FlClash base: upstream `v0.9.2`/main with Mihomo submodule commit `c5062921054902b25215a6a933e72ccd714c9bfa`.
 - Flutter 3.47.6, Go toolchain 1.27.1, JDK 17 and Android NDK 28.2.13676358.
-- NetBird base v0.81.4; dependency fork [fong353/netbird](https://github.com/fong353/netbird/tree/codex/flclash-android-embed), commit `d6ee0f6c3da724f2ab0054831b0b1f56adbaaed6`, pinned by immutable pseudo-version in `core/go.mod` and `core/go.sum`.
+- NetBird base v0.81.4; dependency fork [fong353/netbird](https://github.com/fong353/netbird/tree/codex/flclash-android-embed), commit `9f69e64ea6777cde8fb14f07399ec71712636be4`, pinned by immutable pseudo-version in `core/go.mod` and `core/go.sum`.
 
-The NetBird patch exposes physical-interface discovery and network events to `client/embed`, honors an explicitly installed Android socket protector in netstack mode, and makes enrollment authentication honor the startup context's cancellation. It does not alter control-plane, ICE/relay selection or authorization policy. The Android linker uses `-checklinkname=0`, as the [official NetBird Android build](https://github.com/netbirdio/android-client/blob/main/build-android-lib.sh) does, because its existing `anet` dependency accesses the Go interface zone cache.
+The NetBird patch exposes physical-interface discovery and network events to `client/embed`, honors supplied interface discovery and Android socket protection in netstack mode, and makes enrollment authentication honor the startup context's cancellation. Supplied discovery must take precedence over the netstack fallback: Android applications cannot enumerate interfaces through Go's netlink path. It does not alter control-plane, ICE/relay selection or authorization policy. The Android linker uses `-checklinkname=0`, as the [official NetBird Android build](https://github.com/netbirdio/android-client/blob/main/build-android-lib.sh) does, because its existing `anet` dependency accesses the Go interface zone cache.
 
 ```sh
 git submodule update --init --recursive
@@ -45,6 +45,18 @@ flutter build apk --debug --target-platform android-arm64
 ```
 
 The development APK is `build/app/outputs/flutter-apk/app-debug.apk`. Development signing is not the upstream signing identity. Use an explicit device serial and `adb install --user 0` for an authorized S23 installation. Do not install over the official application's package or copy its private identity.
+
+## Private self-use provisioning
+
+To preset enrollment without entering a form, place `netbird-provision.json` in a private directory outside this repository and build with that directory as an additional Android asset source:
+
+```sh
+FLCLASH_PRIVATE_ASSETS=/absolute/private/assets flutter build apk --debug --target-platform android-arm64
+```
+
+The JSON uses the configuration RPC's fields: `enabled`, `managementUrl`, `deviceName`, `cidr` and the initial one-time `setupKey`. On first Core initialization the native host atomically copies it to private settings with mode 0600. Existing settings take precedence, including after an app update or VPN restart. The key never crosses Flutter's startup arguments, and the private key is generated on the device rather than embedded in the APK. A build without this environment variable has no provisioning asset.
+
+An APK containing a setup key is a private enrollment artifact. Revoke the key at the control plane after registration; the enrolled device continues with its own identity. A fresh installation needs a fresh enrollment key. Do not commit the private asset, upload this APK to public releases, or run both upstream and forked FlClash cores on the same profile ports. Stop the old application before starting the fork, since Android isolates application files but shares TCP/UDP listener ports.
 
 ## Verification
 
@@ -68,6 +80,8 @@ The arm64 development build was verified on 2026-10-27 with Android API 37 on a 
 - The consumed setup key was removed from settings. A document-provider request for the private identity settings was rejected. Runtime logs did not contain the test setup key or proxy credential.
 - Both temporary enrollment keys were revoked and both temporary peers deleted after testing. Existing peer identities and authorization, policies, DNS, routes and networks were unchanged. The test applications, emulator and local echo process were removed.
 
-The verified APK SHA-256 is `3590e62c8a2a68c275cbdf4d0ad1da55c336830ce916c96fe25103a3975740a3`; Android APK signature verification passed. This is a locally signed development artifact, not a published release. No S23 installation or phone-network change was performed.
+The baseline emulator APK SHA-256 is `3590e62c8a2a68c275cbdf4d0ad1da55c336830ce916c96fe25103a3975740a3`; Android APK signature verification passed. This is a locally signed development artifact, not a published release.
 
-Run Android builds and Flutter tests serially because they share generated assets and build outputs. Device-specific Samsung background behavior, real Wi-Fi/cellular switching, overnight battery use and incoming phone services remain separate validation work.
+The updated private build was also installed on a Samsung Galaxy S23 running Android API 37. Preset enrollment, retained identity after a key-revoked app update, and overlay TCP/UDP in rule/global/direct mode passed. Public HTTPS passed with both Hysteria2 and VLESS selected. A Wi-Fi → cellular → Wi-Fi check passed public HTTPS and overlay TCP/UDP with the same identity, and the restored Wi-Fi path established P2P. One initial TCP request closed during the first transition; a second full cellular test passed on its first TCP attempt. These checks establish recovery in the observed transitions, not uninterrupted existing TCP sessions. The original applications and their private identities were retained. The real-device check also exposed and fixed the netstack interface-discovery fallback described above; its regression test runs in the dependency fork.
+
+Run Android builds and Flutter tests serially because they share generated assets and build outputs. A follow-up check after one minute also passed public HTTPS and overlay TCP/UDP; continuous screen-off duration was not confirmed. Extended Samsung background behavior and overnight battery use remain separate validation work. Incoming phone services are outside the implemented feature set.

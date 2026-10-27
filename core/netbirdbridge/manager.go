@@ -175,7 +175,7 @@ func (m *Manager) connect(ctx context.Context, cfg Config, done chan struct{}) {
 	port := 0
 	client, err := nb.New(nb.Options{
 		DeviceName: cfg.DeviceName, ManagementURL: cfg.ManagementURL, SetupKey: setupKey, PrivateKey: privateKey,
-		ConfigPath: m.identityPath(), StatePath: filepath.Join(m.dir, "state.json"),
+		ConfigPath:          m.identityPath(),
 		DisableClientRoutes: true, DisableIPv6: true, BlockInbound: true, BlockLANAccess: true,
 		WireguardPort: &port, InterfaceDiscover: m.discover, NetEvents: events,
 	})

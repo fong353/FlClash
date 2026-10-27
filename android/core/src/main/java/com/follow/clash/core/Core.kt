@@ -10,14 +10,36 @@ import java.security.MessageDigest
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.URI
+import android.system.Os
+import android.util.AtomicFile
 
 object Core {
+    @Synchronized
     private fun prepareNetBirdStorage(initParams: JSONObject) {
         val home = initParams.getString("home-dir")
         val directoryName = MessageDigest.getInstance("SHA-256").digest(home.toByteArray())
             .joinToString("") { "%02x".format(it) }
         val directory = File(GlobalState.application.noBackupFilesDir, "netbird/$directoryName")
         check(Mobile.setNetBirdDirectory(directory.absolutePath)) { "Cannot change active NetBird storage" }
+        val settings = File(directory, "settings.json")
+        val assets = GlobalState.application.assets
+        if (!settings.exists() && assets.list("").orEmpty().contains("netbird-provision.json")) {
+            val data = assets.open("netbird-provision.json").use { it.readBytes() }
+            require(data.size <= 4096) { "Invalid NetBird provisioning size" }
+            JSONObject(String(data, Charsets.UTF_8))
+            check(directory.isDirectory || directory.mkdirs()) { "Cannot create private NetBird storage" }
+            Os.chmod(directory.path, 448)
+            val atomic = AtomicFile(settings)
+            val stream = atomic.startWrite()
+            try {
+                Os.fchmod(stream.fd, 384)
+                stream.write(data)
+                atomic.finishWrite(stream)
+            } catch (error: Exception) {
+                atomic.failWrite(stream)
+                throw error
+            }
+        }
     }
 
     fun forceGC() = Mobile.forceGC()

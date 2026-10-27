@@ -82,6 +82,9 @@ android {
     }
 
     sourceSets {
+        providers.environmentVariable("FLCLASH_PRIVATE_ASSETS").orNull?.let {
+            getByName("main").assets.srcDir(it)
+        }
         // Unit tests live under android/tests/ instead of each module's src/test.
         getByName("test").java.setSrcDirs(listOf("../tests/app"))
     }
