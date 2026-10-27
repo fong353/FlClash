@@ -38,6 +38,7 @@ class ProxyService : Service(), ManagedService {
 
     override fun start() {
         try {
+            check(Core.netBirdCIDR().isEmpty()) { "NetBird requires VPN mode" }
             modules.start()
         } catch (error: Exception) {
             stop()

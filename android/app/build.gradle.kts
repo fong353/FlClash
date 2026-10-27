@@ -33,8 +33,9 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.follow.clash"
-        minSdk = flutter.minSdkVersion
+        applicationId = "com.nate.flclash.netbird"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -107,4 +108,9 @@ dependencies {
     }
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+}
+
+dependencies {
+    androidTestImplementation("androidx.test:runner:1.7.0")
+    androidTestImplementation("androidx.test.ext:junit:1.3.0")
 }

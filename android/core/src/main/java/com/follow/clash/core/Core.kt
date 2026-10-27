@@ -3,11 +3,23 @@ package com.follow.clash.core
 import com.follow.clash.core.mobile.Mobile
 import com.follow.clash.core.mobile.ResultHandler
 import com.follow.clash.core.mobile.TunHandler
+import com.follow.clash.common.GlobalState
+import org.json.JSONObject
+import java.io.File
+import java.security.MessageDigest
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.URI
 
 object Core {
+    private fun prepareNetBirdStorage(initParams: JSONObject) {
+        val home = initParams.getString("home-dir")
+        val directoryName = MessageDigest.getInstance("SHA-256").digest(home.toByteArray())
+            .joinToString("") { "%02x".format(it) }
+        val directory = File(GlobalState.application.noBackupFilesDir, "netbird/$directoryName")
+        check(Mobile.setNetBirdDirectory(directory.absolutePath)) { "Cannot change active NetBird storage" }
+    }
+
     fun forceGC() = Mobile.forceGC()
 
     fun updateDNS(
@@ -26,6 +38,7 @@ object Core {
     fun startTun(
         fd: Int,
         protect: (Int) -> Boolean,
+        discoverInterfaces: () -> String,
         resolveUid: (protocol: Int, source: InetSocketAddress, target: InetSocketAddress) -> Int,
         resolvePackage: (uid: Int) -> String,
         stack: String,
@@ -37,6 +50,8 @@ object Core {
             fd,
             object : TunHandler {
                 override fun protect(fd: Int): Boolean = protect(fd)
+
+                override fun interfaces(): String = discoverInterfaces()
 
                 override fun resolveUid(
                     protocol: Int,
@@ -63,6 +78,10 @@ object Core {
         data: String,
         cb: (result: ByteArray?) -> Unit,
     ) {
+        val call = JSONObject(data)
+        if (call.optString("method") == "initClash") {
+            prepareNetBirdStorage(call.getJSONObject("arguments"))
+        }
         Mobile.invokeMethod(data, ResultHandler { result -> cb(result) })
     }
 
@@ -79,12 +98,15 @@ object Core {
         setupParamsString: String,
         callback: (result: String?) -> Unit,
     ) {
+        prepareNetBirdStorage(JSONObject(initParamsString))
         Mobile.quickSetup(
             initParamsString,
             setupParamsString,
             ResultHandler { result -> callback(result?.decodeToString()) },
         )
     }
+
+    fun netBirdCIDR(): String = Mobile.netBirdCIDR()
 
     fun stopTun() = Mobile.stopTun()
 

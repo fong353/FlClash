@@ -925,6 +925,40 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("更多"),
     "name": MessageLookupByLibrary.simpleMessage("名称"),
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage("底栏"),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage("NetBird 配置"),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "停止 VPN 后保存，再正常启动。首次接入需一次性注册密钥，成功后自动清除；已注册身份保留原管理地址和设备名。本版支持通过 IPv4 地址主动访问内网。",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("已连接"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("连接中"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "NetBird 连接失败",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird 与代理共用此 VPN。各代理模式下，内网 IP 流量均走 NetBird，其余流量沿用配置。启用 NetBird 时不设置 VPN HTTP 代理。",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage("设备名称"),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage("随 VPN 启用 NetBird"),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "无法读取 NetBird 状态。",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("内网网段"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage("暂无设备"),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("点对点连接"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage("NetBird 设备"),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage("中继连接"),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "检查网络和注册配置后，停止并重新启动 VPN 重试。公网代理可继续使用。",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "保存失败，请检查 HTTPS 管理地址、设备名、私有 IPv4 网段和注册密钥。",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage("管理服务器"),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage("一次性注册密钥"),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "请先停止 VPN，再修改 NetBird 配置。",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("未连接"),
     "network": MessageLookupByLibrary.simpleMessage("网络"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,

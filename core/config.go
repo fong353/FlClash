@@ -173,6 +173,10 @@ func applyConfig(params *SetupParams) error {
 		cfg = fallback
 	}
 
+	if netBirdErr := decorateNetBirdConfig(cfg); netBirdErr != nil {
+		return netBirdErr
+	}
+
 	currentConfig = cfg
 	hub.ApplyConfig(cfg)
 	patchSelectGroup(params.SelectedMap)

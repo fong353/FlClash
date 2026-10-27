@@ -1,5 +1,11 @@
 # AGENTS.md
 
+This fork adds Android NetBird integration through an authenticated loopback SOCKS bridge. Read
+[NETBIRD_ANDROID.md](NETBIRD_ANDROID.md) for the data path, dependency pin, build and validation limits.
+Keep the Mihomo submodule unchanged for this integration. Android uses a separate application ID.
+Infrastructure identities and credentials stay outside Git; device/server operations follow server-management.
+
+
 This file is the entry point for AI coding agents working in this repository. Keep it small: detailed guidance lives under
 `.agents/`, and discoverable repo skills live under `.agents/skills/*/SKILL.md`.
 

@@ -22,6 +22,10 @@ mixin CoreInterface {
 
   Future<bool> forceGc();
 
+  Future<Map<String, dynamic>> getNetBirdStatus();
+
+  Future<bool> configureNetBird(Map<String, dynamic> settings);
+
   Future<String> validateConfig(String path);
 
   Future<String> decryptConfig(String path, String ageSecretKey);
@@ -117,6 +121,23 @@ mixin CoreInterface {
 }
 
 abstract class CoreHandlerInterface with CoreInterface {
+  @override
+  Future<Map<String, dynamic>> getNetBirdStatus() async {
+    return await invokeMethod<Map<String, dynamic>>(
+          method: CoreMethod.getNetBirdStatus,
+        ) ??
+        <String, dynamic>{};
+  }
+
+  @override
+  Future<bool> configureNetBird(Map<String, dynamic> settings) async {
+    return await invokeMethod<bool>(
+          method: CoreMethod.configureNetBird,
+          arguments: settings,
+        ) ??
+        false;
+  }
+
   Future<T?> _invokeMethod<T>({
     required CoreMethod method,
     Object? arguments,

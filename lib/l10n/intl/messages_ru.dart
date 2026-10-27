@@ -995,9 +995,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "inputRuleContent": MessageLookupByLibrary.simpleMessage(
       "Введите содержимое правила",
     ),
-    "installedAppsPermissionDeniedMessage": MessageLookupByLibrary.simpleMessage(
-      "Разрешение на список приложений отклонено, поэтому установленные приложения недоступны. Предоставьте его вручную в системных настройках.",
-    ),
+    "installedAppsPermissionDeniedMessage":
+        MessageLookupByLibrary.simpleMessage(
+          "Разрешение на список приложений отклонено, поэтому установленные приложения недоступны. Предоставьте его вручную в системных настройках.",
+        ),
     "installedAppsPermissionDesc": MessageLookupByLibrary.simpleMessage(
       "Эта система не выдаёт список установленных приложений без разрешения. Предоставьте его, чтобы настроить прокси для отдельных приложений.",
     ),
@@ -1237,6 +1238,50 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("Ещё"),
     "name": MessageLookupByLibrary.simpleMessage("Название"),
     "navigationBarStyle": MessageLookupByLibrary.simpleMessage("Нижняя панель"),
+    "netBirdConfiguration": MessageLookupByLibrary.simpleMessage(
+      "Настройки NetBird",
+    ),
+    "netBirdConfigurationHint": MessageLookupByLibrary.simpleMessage(
+      "Сохраните при остановленном VPN, затем запустите его. Одноразовый ключ удаляется после регистрации. Сервер и имя сохраняются. Поддерживается исходящий доступ по IPv4.",
+    ),
+    "netBirdConnected": MessageLookupByLibrary.simpleMessage("Подключено"),
+    "netBirdConnecting": MessageLookupByLibrary.simpleMessage("Подключение"),
+    "netBirdConnectionError": MessageLookupByLibrary.simpleMessage(
+      "Ошибка подключения NetBird",
+    ),
+    "netBirdDescription": MessageLookupByLibrary.simpleMessage(
+      "NetBird использует этот VPN. Внутренние IP идут через NetBird во всех режимах, остальной трафик следует профилю. HTTP-прокси VPN отключён.",
+    ),
+    "netBirdDeviceName": MessageLookupByLibrary.simpleMessage("Имя устройства"),
+    "netBirdEnabled": MessageLookupByLibrary.simpleMessage(
+      "Использовать NetBird с VPN",
+    ),
+    "netBirdLoadError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось получить статус NetBird.",
+    ),
+    "netBirdNetwork": MessageLookupByLibrary.simpleMessage("Оверлейная сеть"),
+    "netBirdNoPeers": MessageLookupByLibrary.simpleMessage(
+      "Нет доступных устройств",
+    ),
+    "netBirdP2P": MessageLookupByLibrary.simpleMessage("Прямое соединение"),
+    "netBirdPeers": MessageLookupByLibrary.simpleMessage("Устройства NetBird"),
+    "netBirdRelayed": MessageLookupByLibrary.simpleMessage(
+      "Через ретранслятор",
+    ),
+    "netBirdRetryHint": MessageLookupByLibrary.simpleMessage(
+      "Проверьте сеть и регистрацию, затем перезапустите VPN. Интернет-прокси продолжает работать.",
+    ),
+    "netBirdSaveError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось сохранить. Проверьте HTTPS-сервер, имя устройства, частную сеть IPv4 и ключ.",
+    ),
+    "netBirdServer": MessageLookupByLibrary.simpleMessage("Сервер управления"),
+    "netBirdSetupKey": MessageLookupByLibrary.simpleMessage(
+      "Одноразовый ключ регистрации",
+    ),
+    "netBirdStopBeforeEditing": MessageLookupByLibrary.simpleMessage(
+      "Остановите VPN перед изменением настроек NetBird.",
+    ),
+    "netBirdStopped": MessageLookupByLibrary.simpleMessage("Отключено"),
     "network": MessageLookupByLibrary.simpleMessage("Сеть"),
     "networkAccessDeniedError": m52,
     "networkBadResponseError": m53,

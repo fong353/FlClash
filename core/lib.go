@@ -20,10 +20,12 @@ import (
 	"github.com/metacubex/mihomo/dns"
 	"github.com/metacubex/mihomo/listener/sing_tun"
 	"github.com/metacubex/mihomo/log"
+	"github.com/metacubex/mihomo/tunnel"
 )
 
 type TunCallbacks interface {
 	Protect(fd int) bool
+	Interfaces() string
 	ResolveUid(protocol int, source, target string) int
 	ResolvePackage(uid int) string
 }
@@ -54,7 +56,7 @@ func (th *TunHandler) start(fd int, stack, address, dns, options string) bool {
 	// on this very goroutine — an RLock taken while this one holds the write
 	// lock deadlocks the start outright. Nothing is lost by dropping it: both
 	// hooks return early until th.listener is set, which is below.
-	tunListener := t.Start(fd, stack, address, dns, options)
+	tunListener := t.Start(fd, stack, address, dns, options, netBirdTunnel{tunnel.Tunnel})
 
 	th.mu.Lock()
 	defer th.mu.Unlock()
@@ -184,6 +186,7 @@ func handleStopTun() {
 }
 
 func stopTunLocked() {
+	stopNetBird()
 	if tunHandler == nil {
 		return
 	}
@@ -203,6 +206,7 @@ func handleStartTun(callbacks TunCallbacks, fd int, stack, address, dns, options
 		callbacks: callbacks,
 	}
 	if tunHandler.start(fd, stack, address, dns, options) {
+		startNetBird()
 		return true
 	}
 	// start() already cleared the handler, so nothing protects sockets from
@@ -218,6 +222,11 @@ var (
 )
 
 func handleUpdateDns(value string) {
+	var netBirdServers []string
+	if value != "" {
+		netBirdServers = strings.Split(value, ",")
+	}
+	netBirdDNS.Store(netBirdServers)
 	// mihomo turns the [""] that Split returns for no servers into a "udp://:"
 	// nameserver, which keeps the system resolver off its default fallback.
 	var addr []string
@@ -398,4 +407,11 @@ func UpdateDns(value string) {
 func ResetNetwork() {
 	defer recoverExport("resetNetwork")
 	safeGo("resetNetwork", handleResetNetwork)
+}
+
+func NetBirdCIDR() string { defer recoverExport("netBirdCIDR"); return netBirdCIDR() }
+
+func SetNetBirdDirectory(path string) bool {
+	defer recoverExport("setNetBirdDirectory")
+	return setNetBirdDirectory(path)
 }

@@ -13,12 +13,21 @@ type ResultHandler interface {
 
 type TunHandler interface {
 	Protect(fd int32) (bool, error)
+	Interfaces() (string, error)
 	ResolveUid(protocol int32, source, target string) (int32, error)
 	ResolvePackage(uid int32) (string, error)
 }
 
 type tunCallbacks struct {
 	handler TunHandler
+}
+
+func (c tunCallbacks) Interfaces() string {
+	value, err := c.handler.Interfaces()
+	if err != nil {
+		return ""
+	}
+	return value
 }
 
 func (c tunCallbacks) Protect(fd int) bool {
@@ -99,3 +108,7 @@ func GetTraffic(onlyStatisticsProxy bool) string {
 func GetTotalTraffic(onlyStatisticsProxy bool) string {
 	return core.GetTotalTraffic(onlyStatisticsProxy)
 }
+
+func NetBirdCIDR() string { return core.NetBirdCIDR() }
+
+func SetNetBirdDirectory(path string) bool { return core.SetNetBirdDirectory(path) }
