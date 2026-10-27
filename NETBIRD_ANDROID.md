@@ -20,6 +20,16 @@ The Android Go resolver uses the physical DNS servers delivered by `NetworkObser
 
 The existing `ServiceState` owns Android VPN intent. The embedded module coalesces its own start/stop requests and cancels pending enrollment without blocking the service callback. Stop closes bridge sessions and stops the embedded client. Network changes reach NetBird's connection-event manager. Transient engine state stays in memory because the embedded client does not manage host routes or DNS. Registration failure leaves public proxy traffic available and overlay traffic blocked; stop/start retries enrollment.
 
+## Home Wi-Fi automatic mode
+
+Open **Tools → Home Wi-Fi automatic mode**, enter the exact home SSID and enable the switch. A matching Wi-Fi SSID selects **Direct**; other networks, a missing/redacted SSID, disabled location or missing background location permission select **Rule**. Matching is case sensitive and preserves spaces. The home SSID is a local Android setting, never a source-code default. Android requires precise location, background location and the system location switch for background SSID detection.
+
+The native observer runs independently of the Flutter screen and also starts through Quick Settings. It requests SSID information only while this feature is enabled. The Go mode override survives profile reloads and prevents stale Flutter mode updates from replacing the automatic choice. Starting a new process uses Rule until the home SSID is observed. This changes the current mode without restarting the VPN or NetBird. While enabled it also takes precedence over the older SSID exclusion feature, which would otherwise pause the VPN. Disable the switch to return to manual mode selection; disabling initially selects Rule.
+
+Existing profile DNS and per-app VPN exclusions retain their normal behavior. This feature selects a Mihomo mode and does not configure the home gateway or stop the Android VPN.
+
+Verification includes 66 covering Flutter tests, 99 Android unit tests, Core tests and Android Go vet. On the S23, background Wi-Fi removal selected Rule and reconnection selected Direct, with the same application process and VPN service instance throughout. NetBird returned connected with the same overlay identity. Extended screen-off behavior remains outside this short transition check.
+
 ## Settings and identity
 
 Open **Tools → NetBird → NetBird configuration**. Stop the VPN before saving changes, then start it normally. Configure an HTTPS management server, a device name, the private IPv4 overlay CIDR and, for first enrollment, a one-time setup key. Example values in the application are placeholders.
@@ -62,7 +72,7 @@ An APK containing a setup key is a private enrollment artifact. Revoke the key a
 
 ```sh
 flutter analyze --no-fatal-infos
-flutter test test/views/netbird_test.dart test/core/protocol_contract_test.dart test/l10n test/lint
+flutter test test/providers/home_wifi_test.dart test/views/home_wifi_test.dart test/views/netbird_test.dart test/core/protocol_contract_test.dart test/l10n test/lint
 cd core
 CGO_ENABLED=0 go test .
 go test -race ./netbirdbridge

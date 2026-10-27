@@ -983,5 +983,11 @@
   "netBirdStopBeforeEditing": "Arrêtez le VPN avant de modifier NetBird.",
   "netBirdDescription": "NetBird partage ce VPN. Les IP internes passent par NetBird dans tous les modes, le reste suit le profil. Le proxy HTTP du VPN est désactivé.",
   "netBirdConfigurationHint": "Enregistrez VPN arrêté, puis démarrez-le. La clé initiale est effacée après inscription. Le serveur et le nom sont conservés. Accès sortant par adresse IPv4.",
-  "netBirdRetryHint": "Vérifiez le réseau et l’inscription, puis redémarrez le VPN. Le proxy Internet reste disponible."
+  "netBirdRetryHint": "Vérifiez le réseau et l’inscription, puis redémarrez le VPN. Le proxy Internet reste disponible.",
+  "homeWifiAutomatic": "Mode automatique du Wi-Fi domestique",
+  "homeWifiSsid": "SSID du Wi-Fi domestique",
+  "homeWifiDescription": "Utiliser Direct si le SSID correspond exactement ; sinon, ou si le SSID est illisible, utiliser Règles. Le VPN et NetBird restent connectés. Désactivez cette fonction pour choisir le mode manuellement.",
+  "homeWifiUnknown": "SSID Wi-Fi indisponible ; mode Règles actif",
+  "homeWifiError": "Impossible de lire ou d’enregistrer les réglages du mode Wi-Fi automatique",
+  "homeWifiSsidError": "Saisissez un SSID de 1 à 32 octets UTF-8"
 }

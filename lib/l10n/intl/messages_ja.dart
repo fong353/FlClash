@@ -755,6 +755,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "タイムアウトしたプロキシを隠す",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("自宅 Wi-Fi 自動モード"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID が完全一致するとダイレクト、それ以外や SSID を取得できない場合はルールを使用します。VPN と NetBird は接続を維持します。手動でモードを選ぶには無効にしてください。",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi 自動モード設定の読み込みまたは保存に失敗しました",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("自宅 Wi-Fi の SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "SSID を UTF-8 で 1〜32 バイトで入力してください",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi SSID を取得できません。ルールを使用します",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("ホップ間隔"),
     "host": MessageLookupByLibrary.simpleMessage("ホスト"),
     "hostname": MessageLookupByLibrary.simpleMessage("ホスト名"),

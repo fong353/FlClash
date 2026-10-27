@@ -101,6 +101,10 @@ func ResetNetwork() {
 	core.ResetNetwork()
 }
 
+func SetHomeWifiMode(mode string) {
+	core.SetHomeWifiMode(mode)
+}
+
 func GetTraffic(onlyStatisticsProxy bool) string {
 	return core.GetTraffic(onlyStatisticsProxy)
 }

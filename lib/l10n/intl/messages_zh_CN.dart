@@ -690,6 +690,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideIp": MessageLookupByLibrary.simpleMessage("隐藏 IP"),
     "hidePassword": MessageLookupByLibrary.simpleMessage("隐藏密码"),
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage("隐藏超时代理"),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("家庭 Wi-Fi 自动模式"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID 完全匹配时使用直连；其他网络或无法读取 SSID 时使用规则。VPN 和 NetBird 保持连接。关闭此功能后可手动选择模式。",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "无法读取或保存 Wi-Fi 自动模式设置",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("家庭 Wi-Fi SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "请输入 1–32 字节的 Wi-Fi SSID",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "未识别到 Wi-Fi SSID，使用规则模式",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("跳跃间隔"),
     "host": MessageLookupByLibrary.simpleMessage("主机"),
     "hostname": MessageLookupByLibrary.simpleMessage("主机名"),

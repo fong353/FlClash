@@ -415,3 +415,8 @@ func SetNetBirdDirectory(path string) bool {
 	defer recoverExport("setNetBirdDirectory")
 	return setNetBirdDirectory(path)
 }
+
+func SetHomeWifiMode(mode string) {
+	defer recoverExport("setHomeWifiMode")
+	setHomeWifiMode(mode)
+}

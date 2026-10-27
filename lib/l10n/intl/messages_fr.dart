@@ -951,6 +951,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "Masquer les proxys expirés",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage(
+      "Mode automatique du Wi-Fi domestique",
+    ),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "Utiliser Direct si le SSID correspond exactement ; sinon, ou si le SSID est illisible, utiliser Règles. Le VPN et NetBird restent connectés. Désactivez cette fonction pour choisir le mode manuellement.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Impossible de lire ou d’enregistrer les réglages du mode Wi-Fi automatique",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage(
+      "SSID du Wi-Fi domestique",
+    ),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "Saisissez un SSID de 1 à 32 octets UTF-8",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "SSID Wi-Fi indisponible ; mode Règles actif",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("Intervalle de saut"),
     "host": MessageLookupByLibrary.simpleMessage("Hôte"),
     "hostname": MessageLookupByLibrary.simpleMessage("Nom d’hôte"),

@@ -983,5 +983,11 @@
   "netBirdStopBeforeEditing": "请先停止 VPN，再修改 NetBird 配置。",
   "netBirdDescription": "NetBird 与代理共用此 VPN。各代理模式下，内网 IP 流量均走 NetBird，其余流量沿用配置。启用 NetBird 时不设置 VPN HTTP 代理。",
   "netBirdConfigurationHint": "停止 VPN 后保存，再正常启动。首次接入需一次性注册密钥，成功后自动清除；已注册身份保留原管理地址和设备名。本版支持通过 IPv4 地址主动访问内网。",
-  "netBirdRetryHint": "检查网络和注册配置后，停止并重新启动 VPN 重试。公网代理可继续使用。"
+  "netBirdRetryHint": "检查网络和注册配置后，停止并重新启动 VPN 重试。公网代理可继续使用。",
+  "homeWifiAutomatic": "家庭 Wi-Fi 自动模式",
+  "homeWifiSsid": "家庭 Wi-Fi SSID",
+  "homeWifiDescription": "SSID 完全匹配时使用直连；其他网络或无法读取 SSID 时使用规则。VPN 和 NetBird 保持连接。关闭此功能后可手动选择模式。",
+  "homeWifiUnknown": "未识别到 Wi-Fi SSID，使用规则模式",
+  "homeWifiError": "无法读取或保存 Wi-Fi 自动模式设置",
+  "homeWifiSsidError": "请输入 1–32 字节的 Wi-Fi SSID"
 }

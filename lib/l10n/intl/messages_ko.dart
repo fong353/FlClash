@@ -744,6 +744,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "시간 초과된 프록시 숨기기",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage("집 Wi-Fi 자동 모드"),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "SSID가 정확히 일치하면 직접 연결을, 다른 네트워크이거나 SSID를 읽을 수 없으면 규칙 모드를 사용합니다. VPN과 NetBird는 연결을 유지합니다. 수동으로 모드를 선택하려면 이 기능을 끄세요.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi 자동 모드 설정을 읽거나 저장할 수 없습니다",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("집 Wi-Fi SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "UTF-8 기준 1–32바이트의 SSID를 입력하세요",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi SSID를 확인할 수 없어 규칙 모드를 사용합니다",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("호핑 간격"),
     "host": MessageLookupByLibrary.simpleMessage("호스트"),
     "hostname": MessageLookupByLibrary.simpleMessage("호스트 이름"),

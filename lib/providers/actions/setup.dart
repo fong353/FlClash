@@ -367,6 +367,7 @@ class SetupAction extends _$SetupAction {
   }
 
   void changeMode(Mode mode) {
+    if (ref.read(homeWifiProvider).enabled) return;
     ref
         .read(patchClashConfigProvider.notifier)
         .update((state) => state.copyWith(mode: mode));

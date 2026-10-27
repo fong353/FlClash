@@ -19,6 +19,7 @@ import 'developer.dart';
 import 'disclaimer.dart';
 import 'theme.dart';
 import 'netbird.dart';
+import 'home_wifi.dart';
 
 class ToolsView extends ConsumerStatefulWidget {
   const ToolsView({super.key});
@@ -63,6 +64,11 @@ class _ToolViewState extends ConsumerState<ToolsView> {
             title: const Text('NetBird'),
             leading: const GlyphIcon(AppGlyphs.key),
             widget: const NetBirdView(),
+          ),
+          ListItem.open(
+            title: Text(appLocalizations.homeWifiAutomatic),
+            leading: const GlyphIcon(AppGlyphs.rules),
+            widget: const HomeWifiView(),
           ),
         ],
         const _AdvancedConfigItem(),

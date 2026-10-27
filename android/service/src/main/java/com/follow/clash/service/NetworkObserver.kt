@@ -91,6 +91,7 @@ object NetworkObserver {
 
     @Synchronized
     fun start() {
+        HomeWifiMode.start()
         if (started) return
         runCatching { requireNotNull(connectivity).registerNetworkCallback(request, callback) }
             .onSuccess { started = true }

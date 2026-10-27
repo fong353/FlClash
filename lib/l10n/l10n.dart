@@ -8251,6 +8251,66 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Home Wi-Fi automatic mode`
+  String get homeWifiAutomatic {
+    return Intl.message(
+      'Home Wi-Fi automatic mode',
+      name: 'homeWifiAutomatic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Wi-Fi SSID`
+  String get homeWifiSsid {
+    return Intl.message(
+      'Home Wi-Fi SSID',
+      name: 'homeWifiSsid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use Direct on an exact SSID match; use Rule on other networks or when the SSID cannot be read. VPN and NetBird stay connected. Turn this off to select a mode manually.`
+  String get homeWifiDescription {
+    return Intl.message(
+      'Use Direct on an exact SSID match; use Rule on other networks or when the SSID cannot be read. VPN and NetBird stay connected. Turn this off to select a mode manually.',
+      name: 'homeWifiDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wi-Fi SSID unavailable; using Rule mode`
+  String get homeWifiUnknown {
+    return Intl.message(
+      'Wi-Fi SSID unavailable; using Rule mode',
+      name: 'homeWifiUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unable to read or save Wi-Fi automatic mode settings`
+  String get homeWifiError {
+    return Intl.message(
+      'Unable to read or save Wi-Fi automatic mode settings',
+      name: 'homeWifiError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter an SSID of 1–32 UTF-8 bytes`
+  String get homeWifiSsidError {
+    return Intl.message(
+      'Enter an SSID of 1–32 UTF-8 bytes',
+      name: 'homeWifiSsidError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

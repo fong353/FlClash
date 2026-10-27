@@ -893,6 +893,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "Hide timed-out proxies",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage(
+      "Home Wi-Fi automatic mode",
+    ),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "Use Direct on an exact SSID match; use Rule on other networks or when the SSID cannot be read. VPN and NetBird stay connected. Turn this off to select a mode manually.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Unable to read or save Wi-Fi automatic mode settings",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage("Home Wi-Fi SSID"),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "Enter an SSID of 1–32 UTF-8 bytes",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "Wi-Fi SSID unavailable; using Rule mode",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("Hop interval"),
     "host": MessageLookupByLibrary.simpleMessage("Host"),
     "hostname": MessageLookupByLibrary.simpleMessage("Hostname"),

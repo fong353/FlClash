@@ -50,6 +50,8 @@ object Core {
 
     fun resetNetwork() = Mobile.resetNetwork()
 
+    fun setHomeWifiMode(mode: String) = Mobile.setHomeWifiMode(mode)
+
     private fun parseInetSocketAddress(address: String): InetSocketAddress {
         val uri = URI("tcp://$address")
         val host = requireNotNull(uri.host) { "Missing host in address: $address" }

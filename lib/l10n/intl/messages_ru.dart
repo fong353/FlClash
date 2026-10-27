@@ -927,6 +927,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "hideTimeoutProxies": MessageLookupByLibrary.simpleMessage(
       "Скрывать прокси с таймаутом",
     ),
+    "homeWifiAutomatic": MessageLookupByLibrary.simpleMessage(
+      "Автоматический режим домашнего Wi-Fi",
+    ),
+    "homeWifiDescription": MessageLookupByLibrary.simpleMessage(
+      "При точном совпадении SSID используется прямой режим; в других сетях или при недоступном SSID — режим правил. VPN и NetBird остаются подключёнными. Отключите эту функцию для ручного выбора режима.",
+    ),
+    "homeWifiError": MessageLookupByLibrary.simpleMessage(
+      "Не удалось прочитать или сохранить настройки автоматического режима Wi-Fi",
+    ),
+    "homeWifiSsid": MessageLookupByLibrary.simpleMessage(
+      "SSID домашнего Wi-Fi",
+    ),
+    "homeWifiSsidError": MessageLookupByLibrary.simpleMessage(
+      "Введите SSID длиной 1–32 байта UTF-8",
+    ),
+    "homeWifiUnknown": MessageLookupByLibrary.simpleMessage(
+      "SSID Wi-Fi недоступен; используется режим правил",
+    ),
     "hopInterval": MessageLookupByLibrary.simpleMessage("Интервал перескока"),
     "host": MessageLookupByLibrary.simpleMessage("Хост"),
     "hostname": MessageLookupByLibrary.simpleMessage("Имя хоста"),
